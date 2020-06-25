@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Main from "./components/mainScreen/main";
+import Authorization from "./components/registrationScreens/authScreen";
 
 
 
