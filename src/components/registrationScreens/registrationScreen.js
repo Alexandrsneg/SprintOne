@@ -26,22 +26,13 @@ class Registration extends React.Component{
             <div className="authScreen">
                 <form className="forms">
                     <div>
-                        <input className="inputs"
-                               value={this.state.login}
-                               onChange={this.onLoginChangeHandler}
-                               type='text'
-                               defaultValue=''
-                               placeholder= 'логин'
-                        /><br/>
-                        <input className="inputs"
-                               value={this.state.pass}
-                               onChange={this.onPasswordChangeHandler}
-                               placeholder='пароль'>
-                        </input><br/>
-                        <button className="buttons"
-                                onClick={this.onBtnClickHandler}>
-                            Зрегистрироваться
-                        </button>
+                        <input className="inputs" value={this.state.login} onChange={this.onLoginChangeHandler}
+                               placeholder= 'логин'/>
+                               <br/>
+                        <input className="inputs" value={this.state.pass} onChange={this.onPasswordChangeHandler}
+                               placeholder='пароль'/>
+                        <br/>
+                        <button className="buttons" onClick={this.onBtnClickHandler}>Зрегистрироваться</button>
 
                     </div>
                 </form>
