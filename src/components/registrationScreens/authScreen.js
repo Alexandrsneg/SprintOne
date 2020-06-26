@@ -3,29 +3,20 @@ import authScreen from "../../styles/authScreen.css";
 import forms from "../../styles/forms.css";
 import buttons from "../../styles/forms.css";
 import {Link, Route, Router} from "react-router-dom";
-import { createBrowserHistory } from 'history';
+import UserStorage from "../../repository/local/userStorage"
+
 
 class Authorization extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state={
-            login: '',
-            pass: ''
-        }
-    }
+
     //функция-обработчик изменения состояния инпута логина
-    onLoginChangeHandler = (event) =>{
-        this.setState({login: event.target.value})
+    onLoginChangeHandler= (event) =>{
+        UserStorage.saveEmail(event.target.value)
     }
     //функция-обработчик изменения состояния инпута пароля
-    onPasswordChangeHandler = (event) =>{
-        this.setState({pass: event.target.value})
+    onPasswordChangeHandler(event){
+        UserStorage.savePassword(event.target.value)
     }
 
-    //функция-обработчик нажатия на кнопку ВОЙТИ
-    onBtnClickHandler = () =>{
-        alert(this.state.pass)
-    }
 
 
     render() {
@@ -33,14 +24,14 @@ class Authorization extends React.Component{
             <div className="authScreen">
                     <form className="forms">
                         <div>
-                        <input className="inputs" value={this.state.login} onChange={this.onLoginChangeHandler}
-                            placeholder= 'логин'/>
+                        <input className="inputs" onChange={this.onLoginChangeHandler}
+                            placeholder= 'email'/>
                             <br/>
-                        <input className="inputs" value={this.state.pass} onChange={this.onPasswordChangeHandler}
-                            placeholder='пароль'/>
+                        <input className="inputs" onChange={this.onPasswordChangeHandler}
+                            placeholder='password'/>
                         <br/>
-                            <Link to="/register">
-                                <button className="buttons" onClick={this.onBtnClickHandler}>Войти</button>
+                            <Link to="/notes">
+                                <button className="buttons" onClick={UserStorage.authUser}>Войти</button>
                             </Link>
                         </div>
                     </form>

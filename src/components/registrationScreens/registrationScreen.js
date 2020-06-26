@@ -1,4 +1,5 @@
 import React from "react";
+import UserStorage from "../../repository/local/userStorage";
 
 class Registration extends React.Component{
     constructor(props) {
@@ -17,10 +18,6 @@ class Registration extends React.Component{
         this.setState({pass: event.target.value})
     }
 
-    //функция-обработчик нажатия на кнопку ВОЙТИ
-    onBtnClickHandler = () =>{
-        alert(this.state.pass)
-    }
     render() {
         return (
             <div className="authScreen">
@@ -32,8 +29,7 @@ class Registration extends React.Component{
                         <input className="inputs" value={this.state.pass} onChange={this.onPasswordChangeHandler}
                                placeholder='пароль'/>
                         <br/>
-                        <button className="buttons" onClick={this.onBtnClickHandler}>Зрегистрироваться</button>
-
+                        <button className="buttons" onClick={UserStorage.regUser}>Зрегистрироваться</button>
                     </div>
                 </form>
             </div>
