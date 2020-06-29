@@ -1,40 +1,43 @@
-import {observable} from "mobx";
 import {regUser, authUser} from "../rest/apiService"
+import {action, decorate, observable} from "mobx";
 
 class UserStorage {
-    userData = {
-        id : 0,
-        email : "",
-        password : "",
-    }
+
+    email = ""
+    password=""
+
+    //!! конвертация в булевое значение для проверки на авторизацию
+    isAuth= !!window.localStorage.getItem("token")
+
 
     saveEmail = (email) => {
-        this.userData.email = email
+        this.email = email
     }
+
+
     savePassword = (password) => {
-        this.userData.password = password
+        this.password = password
     }
-
-    saveId = (id) => {
-        this.userData.id = id
-    }
-    get getEmail(){
-        return this.userData.email
-    }
-    get getPassword(){
-        return this.userData.password
-    }
-
-
 
     authUser = () =>{
-        authUser(this.userData.email, this.userData.password)
+        authUser(this.email, this.password)
     }
 
     regUser = () =>{
-        regUser(this.userData.email, this.userData.password)
+        regUser(this.email, this.password)
     }
-
 }
 
-export default UserStorage;
+decorate(UserStorage, {
+    email: observable,
+    password: observable,
+    isAuth: observable,
+    saveEmail: action,
+    savePassword: action,
+    authUser: action,
+    regUser: action
+})
+
+const userStorage = new UserStorage();
+
+export default userStorage;

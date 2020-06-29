@@ -1,18 +1,17 @@
 .forms{
-    height: 200px;
+
     background-color: #6F2CF5;
     border: 3px solid white;
     border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 400px;
+    align-content: center;
 
+    padding: 60px;
 }
 
 .buttons{
+    display: block;
+    margin: 0 auto;
     color: white;
-    text-align: center;
     font-size: 18px;
     font-weight: 800;
     width: 210px;
@@ -20,10 +19,12 @@
     background-color: #6F2CF5;
     border: 3px solid white;
     border-radius: 15px;
-    margin: 3px;
 }
 
 .inputs{
-    height: 20px;
+display: block;
+    margin: 0 auto;
     width: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
