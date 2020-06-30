@@ -1,7 +1,7 @@
 import React from "react";
 import UserStorage from "../../repository/local/userStorage"
 import CommonForm from "./commonForm";
-import {Redirect} from "react-router-dom";
+
 
 
 class Authorization extends React.Component{
