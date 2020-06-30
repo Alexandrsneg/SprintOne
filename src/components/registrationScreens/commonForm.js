@@ -5,10 +5,8 @@ import forms from "../../styles/forms.module.css";
 import {Link} from "react-router-dom";
 import Main from "../mainScreen/main";
 
+//многоразовый компонент-шаблон для форм регистрации/авторизации
 class CommonForm extends React.Component{
-
-    storageFun = this.props.storageFun
-    buttonName = this.props.buttonName
 
     //функция-обработчик изменения состояния инпута логина
     onLoginChangeHandler = (event) =>{
@@ -28,12 +26,13 @@ class CommonForm extends React.Component{
                     <input className={forms.inputs} defaultValue={UserStorage.password} onChange={this.onPasswordChangeHandler}
                            placeholder='пароль'/>
                     <Link to="/notes">
-                        <button className={forms.buttons} onClick={this.storageFun}>{this.buttonName}</button>
+                        <button className={forms.buttons} onClick={this.props.storageFun}>{this.props.buttonName}</button>
                     </Link>
                 </form>
             </div>
         );
     }
 }
+
 
 export default CommonForm

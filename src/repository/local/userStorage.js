@@ -1,4 +1,4 @@
-import {regUser, authUser} from "../rest/apiService"
+import {ApiService} from "../rest/apiService"
 import {action, decorate, observable} from "mobx";
 
 class UserStorage {
@@ -20,12 +20,29 @@ class UserStorage {
     }
 
     authUser = () =>{
-        authUser(this.email, this.password)
+        return ApiService({
+            url: "/Users/login",
+            method: "POST",
+            body: {
+                email: this.email,
+                password: this.password
+            }
+        }).then(r =>{
+            window.localStorage.setItem("token", r.id)
+            window.location.href = "/notes"
+        })
     }
 
     regUser = () =>{
-        regUser(this.email, this.password)
-    }
+        ApiService({
+            url: "/Users",
+            method: "POST",
+            body: {
+                email: this.email,
+                password: this.password
+            }
+        }).then(r => console.log(r))
+     }
 }
 
 decorate(UserStorage, {
