@@ -1,0 +1,97 @@
+.forms{
+    position: relative;
+    background-color: #6F2CF5;
+    border: 3px solid white;
+    border-radius: 15px;
+    width: 700px;
+    height: 150px;
+}
+
+.button_delete{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    width: 100px;
+    height: 40px;
+    background-color: red;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+
+.button_done{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    width: 100px;
+    height: 40px;
+    background-color: darkgreen;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+.button_not_done{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: black;
+    font-size: 16px;
+    font-weight: 800;
+    width: 100px;
+    height: 40px;
+    background-color: yellow;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+.button_edit{
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    width: 100px;
+    height: 40px;
+    background-color: darkblue;
+    border: 3px solid white;
+    border-radius: 15px;
+}
+
+
+.button_add{
+    color: black;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 10px;
+    background-color: darkgray;
+    border: 3px solid white;
+    border-radius: 15px;
+    width: 700px;
+    height: 40px;
+}
+
+
+.taskDiv{
+    width: 70%;
+    padding: 5px;
+}
+
+.taskDiv>h2{
+    color: black;
+    font-size: 16px;
+    font-weight: 800;
+    margin: 5px 10px;
+}
+
+.taskDiv>div{
+    margin: 10px 10px;
+}
+
+

@@ -8,6 +8,7 @@ import Registration from "../registrationScreens/registrationScreen";
 import AllNotesScreen from "../notesScreens/allNotesScreen";
 import userStorage from "../../repository/local/userStorage";
 import {observer} from "mobx-react";
+import EditTask from "../notesScreens/editTask";
 
 
 
@@ -35,6 +36,7 @@ class Main extends React.Component{
                         <h2>Мои заметки</h2>
                         <div>
                             <PrivateRoute exact path="/notes" auth={userStorage.isAuth} component={AllNotesScreen}/>
+                            <Route exact path="/edit" component={EditTask}/>
                         </div>
                     </Router>
                 </div> :

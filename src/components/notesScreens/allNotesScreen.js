@@ -1,16 +1,19 @@
 import React from "react";
-import authScreen from "../../styles/authScreen.module.css";
-import forms from "../../styles/forms.module.css";
-import buttons from "../../styles/forms.module.css";
-import {Link, Route, Router} from "react-router-dom";
+import TaskView from "./taskView";
+import notes from "../../styles/notes.module.css";
 
+
+const add = () => console.log("Добавить")
 
 class AllNotesScreen extends React.Component{
 
     render() {
         return (
-            <h1>Экран заметок</h1>
-
+            <div>
+                <h1>Экран заметок</h1>
+                <TaskView done={false} id={1} />
+                <button className={notes.button_add} onClick={add}>+</button>
+             </div>
         );
     }
 }
