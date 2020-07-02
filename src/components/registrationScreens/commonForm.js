@@ -3,7 +3,6 @@ import UserStorage from "../../repository/local/userStorage";
 import authScreen from "../../styles/authScreen.module.css";
 import forms from "../../styles/forms.module.css";
 import {Link} from "react-router-dom";
-import Main from "../mainScreen/main";
 
 //многоразовый компонент-шаблон для форм регистрации/авторизации
 class CommonForm extends React.Component{

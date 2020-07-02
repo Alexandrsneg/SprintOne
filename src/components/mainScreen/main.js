@@ -9,8 +9,9 @@ import AllNotesScreen from "../notesScreens/allNotesScreen";
 import userStorage from "../../repository/local/userStorage";
 import {observer} from "mobx-react";
 import EditTask from "../notesScreens/editTask";
+import CreateNewTask from "../notesScreens/createTask";
 
-
+const history = createBrowserHistory()
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => (
     <Route
@@ -31,12 +32,13 @@ class Main extends React.Component{
         return (
             userStorage.isAuth ?
                 <div className={main.main}>
-                    <Router history={createBrowserHistory()}>
+                    <Router history={history}>
                         <Link to="/login"><button onClick={logout} className={router.button_logout}  >Выйти</button></Link>
                         <h2>Мои заметки</h2>
                         <div>
                             <PrivateRoute exact path="/notes" auth={userStorage.isAuth} component={AllNotesScreen}/>
-                            <Route exact path="/edit" component={EditTask}/>
+                            <Route exact path="/edit/:id" component={EditTask}/>
+                            <Route exact path="/create"  component={CreateNewTask}/>
                         </div>
                     </Router>
                 </div> :

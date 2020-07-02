@@ -3,10 +3,10 @@ const HOST = `http://127.0.0.1:${PORT}`
 const API_URL = `${HOST}/api`
 
 
-
+const TOKEN = localStorage.getItem("token")
 
 export const ApiService = ({url, method, body}) =>{
-    const ApiUrl = `${API_URL + url}`
+    const ApiUrl = `${API_URL + url + (!!TOKEN ? `?access_token=${TOKEN}` : "")}`
   return fetch(ApiUrl,{
       method,
       headers : {

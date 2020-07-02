@@ -18,12 +18,12 @@ render() {
                     </div>
                 {this.props.done ?
                     <button className={notes.button_done}
-                            onClick={TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</button> :
+                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</button> :
                     <button className={notes.button_not_done}
-                            onClick={TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</button>
+                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</button>
                 }
                 <Link to="/edit"> <button className={notes.button_edit} >Изменить</button></Link>
-                    <button className={notes.button_delete} onClick={TasksStorage.deleteTask(this.props.id)}>Удалить</button>
+                    <button className={notes.button_delete} onClick={()=> TasksStorage.deleteTask(this.props.id)}>Удалить</button>
             </form>
         </div>
 

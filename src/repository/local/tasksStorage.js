@@ -5,12 +5,13 @@ class TasksStorage {
 
     tasksData = {
         tasks : [],
-        id : 0
+        count : 0
     }
 
     task = {
         title : "",
-        body : ""
+        body : "",
+        id : 0
     }
 
 
@@ -23,16 +24,31 @@ class TasksStorage {
         this.task.body = body
     }
 
+    //записываем таски с сервера в объект таскДата
+    setTasks = (tasks) =>{
+        this.tasksData.tasks = tasks
+        this.tasksData.count = this.tasksData.tasks.length
+    }
 
+    //получаем все имеющиеся таски с сервера
+    getTasks = () => {
+        ApiService({
+            url : "/tasks",
+            method: "GET",
+        }).then(response => this.setTasks(response))
+    }
 
+   //добавлчем новую таску на сервер получаем все + новая
     addTask= () =>{
         ApiService({
             url: "/tasks",
             method: "POST",
             body: this.task
-        }).then(response => console.log(response))
+        }).then(response => this.getTasks())
     }
 
+
+    //редактируем таску по айди
     editTask= (id) =>{
         ApiService({
             url: `/tasks/${id}`,
@@ -41,6 +57,7 @@ class TasksStorage {
         }).then(response => console.log(response))
     }
 
+    //меняем статус по айди
     changeStatusOfTask= (id, flag) =>{
         ApiService({
             url: `/tasks/${id}`,
@@ -49,14 +66,13 @@ class TasksStorage {
         }).then(response => console.log(response))
     }
 
+
     deleteTask = (id) => {
         ApiService({
             url : `/tasks/${id}`,
             method : "DELETE"
-        }).then(response => console.log(response))
+        }).then(response => this.getTasks())
     }
-
-
 
 
 }
@@ -65,7 +81,13 @@ class TasksStorage {
         tasksData: observable,
         task: observable,
         setTitle: action,
-        setBody: action
+        setBody: action,
+        setTasks: action,
+        getTasks: action,
+        addTask: action,
+        editTask: action,
+        changeStatusOfTask: action,
+        deleteTask: action
     })
 
 const tasksStorage = new TasksStorage();
