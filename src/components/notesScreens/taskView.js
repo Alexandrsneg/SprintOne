@@ -1,12 +1,20 @@
 import * as React from "react";
 import notes from "../../styles/notes.module.css";
 import TasksStorage from "../../repository/local/tasksStorage"
-import {Link} from "react-router-dom";
+import {observer} from "mobx-react";
 
 
 
 
 class TaskView extends React.Component{
+
+    redirect = () =>{
+       return window.location.href=`/edit/${this.props.id}`
+    }
+
+    changeButtonLocal = () =>{
+
+    }
 
 render() {
     return (
@@ -17,13 +25,13 @@ render() {
                         {this.props.body}
                     </div>
                 {this.props.done ?
-                    <button className={notes.button_done}
-                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</button> :
-                    <button className={notes.button_not_done}
-                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</button>
+                    <div className={notes.button_done}
+                            onClick={() =>TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</div> :
+                    <div className={notes.button_not_done}
+                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</div>
                 }
-                <Link to="/edit"> <button className={notes.button_edit} >Изменить</button></Link>
-                    <button className={notes.button_delete} onClick={()=> TasksStorage.deleteTask(this.props.id)}>Удалить</button>
+                 <div className={notes.button_edit} onClick={this.redirect}>Изменить</div>
+                    <div className={notes.button_delete} onClick={()=> TasksStorage.deleteTask(this.props.id)}>Удалить</div>
             </form>
         </div>
 
@@ -31,4 +39,4 @@ render() {
 }
 }
 
-export default TaskView;
+export default observer(TaskView);

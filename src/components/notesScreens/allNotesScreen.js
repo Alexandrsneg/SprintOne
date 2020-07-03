@@ -14,14 +14,11 @@ class AllNotesScreen extends React.Component{
         TasksStorage.getTasks()
     }
 
-    tasksCount = () => alert(TasksStorage.tasksData.count)
-
     render() {
         return (
             <div>
                 <h1>Экран заметок</h1>
                 <Link to="/create"> <button className={notes.button_add}>+</button></Link>
-                <button className={notes.button_add} onClick={this.tasksCount}>?</button>
                 {TasksStorage.tasksData.tasks.map((value) => {
                 return <TaskView key={value.id}
                                  done={value.done}

@@ -4,8 +4,7 @@ import {ApiService} from "../rest/apiService";
 class TasksStorage {
 
     tasksData = {
-        tasks : [],
-        count : 0
+        tasks : []
     }
 
     task = {
@@ -14,6 +13,7 @@ class TasksStorage {
         body : ""
     }
 
+    flagForButton
 
     setTitle = (title) => {
         this.task.title = title
@@ -27,9 +27,15 @@ class TasksStorage {
     //записываем таски с сервера в объект таскДата
     setTasks = (tasks) =>{
         this.tasksData.tasks = tasks
-        this.tasksData.count = this.tasksData.tasks.length
     }
 
+    setTask = (task) =>{
+        this.task = task
+    }
+
+    changeButton = (flag) =>{
+        this.flagForButton = !flag
+    }
 
     //получаем все имеющиеся таски с сервера
     getTasks = () => {
@@ -55,7 +61,7 @@ class TasksStorage {
             url: `/tasks/${id}`,
             method: "PATCH",
             body: this.task
-        }).then(response => console.log(response))
+        }).then(response => this.getTasks())
     }
 
     //меняем статус по айди
@@ -64,7 +70,7 @@ class TasksStorage {
             url: `/tasks/${id}`,
             method: "PATCH",
             body: {"done" : !flag}
-        }).then(response => console.log(response))
+        }).then(response => this.changeButton(response))
     }
 
 
@@ -75,12 +81,21 @@ class TasksStorage {
         }).then(response => this.getTasks())
     }
 
+    //получаем таску по айди
+    getTaskById= (id) =>{
+        ApiService({
+            url: `/tasks/${id}`,
+            method: "GET"
+        }).then(response => this.setTask(response))
+    }
+
 
 }
 
     decorate(TasksStorage, {
         tasksData: observable,
         task: observable,
+        flagForButton: observable,
         setTitle: action,
         setBody: action,
         setTasks: action,
@@ -88,7 +103,8 @@ class TasksStorage {
         addTask: action,
         editTask: action,
         changeStatusOfTask: action,
-        deleteTask: action
+        deleteTask: action,
+        getTaskById: action
     })
 
 const tasksStorage = new TasksStorage();

@@ -17,11 +17,13 @@
     color: white;
     font-size: 18px;
     font-weight: 800;
-    width: 100px;
-    height: 40px;
+    width: 95px;
+    height: 30px;
     background-color: red;
     border: 3px solid white;
     border-radius: 15px;
+    padding-top: 7px;
+    cursor: pointer;
 }
 
 
@@ -32,11 +34,13 @@
     color: white;
     font-size: 18px;
     font-weight: 800;
-    width: 100px;
-    height: 40px;
+    width: 95px;
+    height: 30px;
     background-color: darkgreen;
     border: 3px solid white;
     border-radius: 15px;
+    padding-top: 7px;
+    cursor: pointer;
 }
 
 .button_not_done{
@@ -46,25 +50,29 @@
     color: black;
     font-size: 16px;
     font-weight: 800;
-    width: 100px;
-    height: 40px;
+    width: 95px;
+    height: 30px;
     background-color: yellow;
     border: 3px solid white;
     border-radius: 15px;
+    padding-top: 7px;
+    cursor: pointer;
 }
 
 .button_edit{
     position: absolute;
-    top: 55px;
+    top: 54px;
     right: 10px;
     color: white;
     font-size: 16px;
     font-weight: 800;
-    width: 100px;
-    height: 40px;
+    width: 95px;
+    height: 30px;
     background-color: darkblue;
     border: 3px solid white;
     border-radius: 15px;
+    padding-top: 7px;
+    cursor: pointer;
 }
 
 
@@ -104,11 +112,12 @@
     border-radius: 5px;
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 
 .taskDiv{
-    width: 70%;
+    width: 80%;
     padding: 5px;
     font-size: 14px;
 }

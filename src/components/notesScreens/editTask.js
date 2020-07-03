@@ -2,6 +2,7 @@ import React from "react";
 import notes from "../../styles/notes.module.css";
 import TasksStorage from "../../repository/local/tasksStorage";
 import {Redirect, withRouter} from "react-router-dom";
+import {observer} from "mobx-react";
 
 
 
@@ -10,6 +11,7 @@ class EditTask extends React.Component{
 
     //флаг на изменения заметки
     changes;
+
 
     //защита от закрытия без сохранения изменений в заметке
    safetyClose = () =>{
@@ -43,8 +45,12 @@ class EditTask extends React.Component{
         this.changes = true
     }
 
+    componentDidMount() {
+        TasksStorage.getTaskById(this.props.match.params.id)
+    }
+
+
     render() {
-        console.log(this.props.match.params)
         return (
             <div>
                 <h1>Редактирование заметки</h1>
@@ -61,4 +67,4 @@ class EditTask extends React.Component{
 }
 
 
-export default withRouter(EditTask);
+export default observer(EditTask);
