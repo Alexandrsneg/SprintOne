@@ -9,9 +9,9 @@ class TasksStorage {
     }
 
     task = {
+        id : null,
         title : "",
-        body : "",
-        id : 0
+        body : ""
     }
 
 
@@ -30,16 +30,17 @@ class TasksStorage {
         this.tasksData.count = this.tasksData.tasks.length
     }
 
+
     //получаем все имеющиеся таски с сервера
     getTasks = () => {
         ApiService({
             url : "/tasks",
-            method: "GET",
+            method: "GET"
         }).then(response => this.setTasks(response))
     }
 
    //добавлчем новую таску на сервер получаем все + новая
-    addTask= () =>{
+    addTask = () =>{
         ApiService({
             url: "/tasks",
             method: "POST",
