@@ -14,6 +14,8 @@ class AllNotesScreen extends React.Component{
         TasksStorage.getTasks()
     }
 
+
+
     render() {
         return (
             <div>

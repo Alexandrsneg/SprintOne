@@ -2,6 +2,7 @@ import * as React from "react";
 import notes from "../../styles/notes.module.css";
 import TasksStorage from "../../repository/local/tasksStorage"
 import {observer} from "mobx-react";
+import {Link} from "react-router-dom";
 
 
 
@@ -26,9 +27,9 @@ render() {
                     </div>
                 {this.props.done ?
                     <div className={notes.button_done}
-                            onClick={() =>TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</div> :
+                          onClick={() =>TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Готово</div> :
                     <div className={notes.button_not_done}
-                            onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</div>
+                         onClick={() => TasksStorage.changeStatusOfTask(this.props.id, this.props.done)}>Не готово</div>
                 }
                  <div className={notes.button_edit} onClick={this.redirect}>Изменить</div>
                     <div className={notes.button_delete} onClick={()=> TasksStorage.deleteTask(this.props.id)}>Удалить</div>

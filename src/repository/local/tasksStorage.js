@@ -35,6 +35,7 @@ class TasksStorage {
 
     changeButton = (flag) =>{
         this.flagForButton = !flag
+        this.getTasks()
     }
 
     //получаем все имеющиеся таски с сервера
